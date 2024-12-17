@@ -15,7 +15,8 @@ public class Service implements ILivre {
         if (livres.contains(livre))
             System.out.println("déja existe");
         else
-            livres.add(livre);  // Ajouter le livre à la liste
+            livres.add(livre);
+
         System.out.println("Livre ajouté avec succès !");
         return livre;
     }
@@ -24,29 +25,41 @@ public class Service implements ILivre {
     public Livre AfficherLivre(Livre livre) {
         return livres.get(livres.indexOf(livre));
     }
-
     @Override
-    public Livre AfficherLivreId(int id) {
+    public Livre AfficherLivreId( int id) {
+        for (Livre livres : livres) {
+            if (livres.getId_livre()== id) {
+                return livres;
+            }
+        }
+        return null;
+    }
+    @Override
+    public Livre ModifierLivre(Livre livre,int id) {
+            for (Livre livres:livres){
+              if (livres.getId_livre() ==id){
+                  livres.setTitre_livre(livres.getTitre_livre());
+                  livres.setType_livre(livres.getType_livre());
+                  livres.setAuteur_livre(livres.getAuteur_livre());
+                  livres.setDt_livre(livres.getDt_livre());
+                  Livre livreUp=AfficherLivre(livres);
+
+              }
+              return livres;
+
+            }
+
         return null;
     }
 
     @Override
     public void supprimerLivre(int id) {
-
+      livres.remove(id-1);
     }
 
-    @Override
-    public Livre AfficherLivreId(Livre livre, int id) {
-        return null;
-    }
 
-    @Override
-    public void supprimerLivre() {
 
-    }
 
-    @Override
-    public Livre ModifierLivre(Livre livre) {
-        return null;
-    }
+
+
 }
