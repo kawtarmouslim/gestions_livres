@@ -11,18 +11,12 @@ public class Service implements ILivre {
 
     @Override
     public Livre AjouterLivre(Livre livre) {
-        if (livres.contains(livre))
-            System.out.println("déja existe");
-        else
             livres.add(livre);
-
-        System.out.println("Livre ajouté avec succès !");
         return livre;
     }
 
     @Override
     public List<Livre> AfficherLivre() {
-
         return livres;
     }
     @Override
@@ -66,13 +60,12 @@ public class Service implements ILivre {
 
     @Override
     public void rapportLivre() {
-
-
         List<Livre>livresRetour=livres.stream()
                 .filter(disponible-> disponible.getDisponibilité())
                 .collect(Collectors.toList());
         System.out.println("les livre retours sont :");
                System.out.println(livresRetour);
+
         List<Livre>livresEmprunt=livres.stream()
                 .filter(emprunt-> !emprunt.getDisponibilité())
                 .collect(Collectors.toList());
