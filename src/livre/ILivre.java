@@ -2,7 +2,8 @@ package livre;
 
 import java.util.List;
 
-public interface ILivre { Livre AjouterLivre(Livre livre);
+public interface ILivre {
+ Livre AjouterLivre(Livre livre);
   List<Livre> AfficherLivre();
    void supprimerLivre(int id);
     Livre AfficherLivreId( int id);
